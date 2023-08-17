@@ -1,0 +1,53 @@
+# 배열 
+
+- 같은 데이터 타입의 변수를 한꺼번에 여러 개 생성 할 수 있다.
+
+선언
+int[] arr = new int[10];
+
+초기화
+int[ ] mydream = new int[ ]{0, 100, 200, 300, 400, 500, 600, 700, 800, 900};
+int[ ] mydream = new int[10]{0, 100, 200, 300, 400, 500, 600, 700, 800, 900}; 
+int[ ] mydream = {0, 100, 200, 300, 400, 500, 600, 700, 800, 900};
+
+# 다차원 배열
+int[, ] multiArr = new int[3, 2];
+
+# foreach문
+
+- 배열이나 컬렉션에 주로 사용하는 제어문
+
+특징
+- 읽기전용이라 데이터 값을 변경할 수 없음.
+
+int[] intArray = new int[10]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+foreach(int a in intArray)
+	Console.WriteLine(a);
+
+
+# 문자열(String)
+
+System.String 클래스의 객체
+
+문자열을 배열처럼 사용 가능!
+
+문자열 함수 알아보기~
+
+
+# 컬렉션(Collection)
+
+- ArrayList, SortedList, Hashtable, Stack, Queue 등등...
+
+ArrayList의 모든 데이터 출력하기 -> 그냥 foreach나 for로 해도 됨.
+
+- 객체를 삽입할 때 키와 값을 같이 입력함.
+
+# Queue - Enqueue(), Dequeue(), Peek()
+
+- 선입선출구조
+
+# Stack - Push(), Pop(), Peek()
+
+- 후입선출구조
+
