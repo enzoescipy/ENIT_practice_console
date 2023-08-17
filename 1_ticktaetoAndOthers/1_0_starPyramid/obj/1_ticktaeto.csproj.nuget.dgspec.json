@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaeto\\1_ticktaeto.csproj": {}
+    "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaetoAndOthers\\1_0_starPyramid\\1_ticktaeto.csproj": {}
   },
   "projects": {
-    "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaeto\\1_ticktaeto.csproj": {
+    "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaetoAndOthers\\1_0_starPyramid\\1_ticktaeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaeto\\1_ticktaeto.csproj",
+        "projectUniqueName": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaetoAndOthers\\1_0_starPyramid\\1_ticktaeto.csproj",
         "projectName": "1_ticktaeto",
-        "projectPath": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaeto\\1_ticktaeto.csproj",
+        "projectPath": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaetoAndOthers\\1_0_starPyramid\\1_ticktaeto.csproj",
         "packagesPath": "C:\\Users\\asdfg\\.nuget\\packages\\",
-        "outputPath": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaeto\\obj\\",
+        "outputPath": "D:\\aa_Projects_Folder\\ENIT_practice\\1_ticktaetoAndOthers\\1_0_starPyramid\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asdfg\\AppData\\Roaming\\NuGet\\NuGet.Config",

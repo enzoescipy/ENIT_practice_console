@@ -1,0 +1,15 @@
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\bin\Debug\net7.0\1_1_lottery.exe
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\bin\Debug\net7.0\1_1_lottery.deps.json
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\bin\Debug\net7.0\1_1_lottery.runtimeconfig.json
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\bin\Debug\net7.0\1_1_lottery.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\bin\Debug\net7.0\1_1_lottery.pdb
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.csproj.AssemblyReference.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.GeneratedMSBuildEditorConfig.editorconfig
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.AssemblyInfoInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.AssemblyInfo.cs
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.csproj.CoreCompileInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\refint\1_1_lottery.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.pdb
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\1_1_lottery.genruntimeconfig.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_1_lottery\obj\Debug\net7.0\ref\1_1_lottery.dll
