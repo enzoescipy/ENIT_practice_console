@@ -8,10 +8,13 @@ namespace MainProject
 {
     internal class Program
     {
+        static bool terminate = false;
         static void Main(string[] args)
         {
-            // Console.WriteLine(UserInput.GetInt("오직양수 : ", true, true)); // debug
-            MainWindow();
+            while (terminate == false)
+            {
+                MainWindow();
+            }
         }
 
         static void MainWindow()
@@ -59,7 +62,6 @@ namespace MainProject
             }
 
             UserInput.Get("press enter to return back ...  (any):");
-            MainWindow();
         }
 
         static void WindowRevPyramid()
@@ -175,6 +177,7 @@ namespace MainProject
 
         static void WindowExit()
         {
+            terminate = true;
             UserInput.Get("press enter to exit...  (any):");
         }
 

@@ -1,0 +1,15 @@
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\bin\Debug\net7.0\1_2_ticktaeto.exe
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\bin\Debug\net7.0\1_2_ticktaeto.deps.json
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\bin\Debug\net7.0\1_2_ticktaeto.runtimeconfig.json
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\bin\Debug\net7.0\1_2_ticktaeto.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\bin\Debug\net7.0\1_2_ticktaeto.pdb
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.csproj.AssemblyReference.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.GeneratedMSBuildEditorConfig.editorconfig
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.AssemblyInfoInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.AssemblyInfo.cs
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.csproj.CoreCompileInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\refint\1_2_ticktaeto.dll
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.pdb
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\1_2_ticktaeto.genruntimeconfig.cache
+D:\aa_Projects_Folder\ENIT_practice\1_ticktaetoAndOthers\1_2_ticktaeto\obj\Debug\net7.0\ref\1_2_ticktaeto.dll
