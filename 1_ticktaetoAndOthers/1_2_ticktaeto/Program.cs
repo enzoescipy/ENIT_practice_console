@@ -44,6 +44,7 @@ namespace MainProject
 
         static void PlayWithYourFriend()
         {
+            Console.Clear();
             var Board = new GameBoard3x3();
 
             Console.WriteLine("Welcome to the TickTaeTo Game.");
@@ -53,6 +54,7 @@ namespace MainProject
             while (true)
             {
                 // intruduce the game state
+                Console.Clear();
                 if (isTurnUser1) {Console.WriteLine("USER1 (ⵔ) turn.");} else {Console.WriteLine("USER2 (✘) turn.");}
                 Console.WriteLine(Board.PrintBoard());
                 var userInputNum = UserInput.GetSpecific("Please put the number 1~9 you wan to place your marker  :",
@@ -66,9 +68,9 @@ namespace MainProject
                 if (state != null) 
                 {
                     Console.WriteLine(Board.PrintBoard());
-                    if (state == 1) { Console.WriteLine("USER1 (ⵔ) WINs !!!"); user1Score++;}
-                    else if(state == -1) { Console.WriteLine("USER2 (✘) WINs !!!"); user2Score++;}
-                    else { Console.WriteLine("the TIE !!"); }
+                    if (state == 1) { Console.WriteLine("USER1 (ⵔ) WINs !!!"); user1Score += 10;}
+                    else if(state == -1) { Console.WriteLine("USER2 (✘) WINs !!!"); user2Score += 10;}
+                    else { Console.WriteLine("the TIE !!");user1Score += 5;  user2Score += 5;}
                     break;
                 }
                 if (isTurnUser1) {isTurnUser1 = false;} else { isTurnUser1 = true ;}
@@ -79,6 +81,7 @@ namespace MainProject
 
         static void PlayWithBot()
         {
+            Console.Clear();
             var Board = new GameBoard3x3();
 
             Console.WriteLine("Welcome to the TickTaeTo Game.");
@@ -92,6 +95,7 @@ namespace MainProject
 
             while (true)
             {
+                Console.Clear();
                 // intruduce the game state
                 bool isCurrentTurnHuman = !(isFirstTurnHuman ^ isTurnFirst);
                 if (isCurrentTurnHuman) {Console.Write("User ");} else {Console.Write("Bot ");}
@@ -118,15 +122,15 @@ namespace MainProject
                     Console.WriteLine(Board.PrintBoard());
                     if (state == 1) 
                     { 
-                        if (isFirstTurnHuman) {Console.WriteLine("Human (ⵔ) WINs !!!"); personScore++;}
-                        else {Console.WriteLine("Bot (ⵔ) WINs !!!"); botScore++;}
+                        if (isFirstTurnHuman) {Console.WriteLine("Human (ⵔ) WINs !!!"); personScore+=10;}
+                        else {Console.WriteLine("Bot (ⵔ) WINs !!!"); botScore+=10;}
                     }
                     else if(state == -1) 
                     { 
-                        if (isFirstTurnHuman) {Console.WriteLine("Bot (✘) WINs !!!"); botScore++;}
-                        else {Console.WriteLine("Human (✘) WINs !!!"); personScore++;}
+                        if (isFirstTurnHuman) {Console.WriteLine("Bot (✘) WINs !!!"); botScore+=10;}
+                        else {Console.WriteLine("Human (✘) WINs !!!"); personScore+=10;}
                     }
-                    else { Console.WriteLine("the TIE !!"); }
+                    else { Console.WriteLine("the TIE !!"); botScore+=5; personScore+=5;}
                     break;
                 }
                 if (isTurnFirst) {isTurnFirst = false;} else { isTurnFirst = true ;}
@@ -136,6 +140,7 @@ namespace MainProject
         }
         static void ScoreBoard()
         {
+            Console.Clear();
             Console.WriteLine("SCOREBOARD");
             Console.WriteLine("1. User1 VS User2 mode");
             if (user1Score >= user2Score) 
@@ -352,33 +357,8 @@ namespace MainProject
             // which will return true only if the statement is true.
             bool evaluate(Func<bool> statement, Action<int, int> investigate, Action initialize)
             {
-                initialize();
-                // // check the verital lines.
-                for (int xIndex = 0; xIndex<3; xIndex++)
-                {
-                    for (int yIndex = 0; yIndex < 3; yIndex++)
-                    {
-                        investigate(xIndex, yIndex);
-                    }
-                    if (statement()) { return true; }
-                    
-                    initialize();
-                }
-
-                // // check the horizontal lines
-                initialize();
-                for (int yIndex = 0; yIndex<3; yIndex++)
-                {
-                    for (int xIndex = 0; xIndex < 3; xIndex++)
-                    {
-                        investigate(xIndex, yIndex);
-                    }
-                    if (statement()) { return true; }
-                    
-                    initialize();
-                }
-
                 // // check the diagonal lines
+                // Console.WriteLine("eval - - diagonal");  //debug
                 initialize();
                 for (int i=0; i < 3; i++)
                 {
@@ -397,6 +377,34 @@ namespace MainProject
 
                     if (statement()) { return true; }
                 }
+                
+                // // check the verital lines.
+                initialize();
+                // Console.WriteLine("eval - - vertical"); //debug
+                for (int xIndex = 0; xIndex<3; xIndex++)
+                {
+                    for (int yIndex = 0; yIndex < 3; yIndex++)
+                    {
+                        investigate(xIndex, yIndex);
+                    }
+                    if (statement()) { return true; }
+                    
+                    initialize();
+                }
+
+                // // check the horizontal lines
+                initialize();
+                // Console.WriteLine("eval - - horizontal"); //debug
+                for (int yIndex = 0; yIndex<3; yIndex++)
+                {
+                    for (int xIndex = 0; xIndex < 3; xIndex++)
+                    {
+                        investigate(xIndex, yIndex);
+                    }
+                    if (statement()) { return true; }
+                    
+                    initialize();
+                }
 
                 // no case catched -> return false.
                 return false;
@@ -404,6 +412,7 @@ namespace MainProject
             
             // evaluate priority rank 1 : the move that makes you win
             bool isNextMoveDecided = evaluate(() => markCount == 2 && isEmptyOccured == true, investigate_myMark, initialize);
+            // Console.WriteLine("priority 1"); //debug
             if (isNextMoveDecided) {return nextMoveCandidate;}
 
             // evaluate priority rank 2 : the move that prevent the opponent from winning
@@ -415,9 +424,11 @@ namespace MainProject
                 else if(mark == 0) {isEmptyOccured = true; nextMoveCandidate = new int[] {xIndex, yIndex};}
             }
             isNextMoveDecided = evaluate(() => markCount == 2 && isEmptyOccured == true, investigate_opponentMark, initialize);
+            // Console.WriteLine("priority 2"); //debug
             if (isNextMoveDecided) {return nextMoveCandidate;}
 
             // evaluate priority rank 3 : the center position
+            // Console.WriteLine("priority 3"); //debug
             if (board[1][1] == 0) { return new int[] {1,1} ;}
 
             // evaluate priority rank 4 : double-serize making
@@ -434,9 +445,18 @@ namespace MainProject
                 emptyCount = 0;
             }
             isNextMoveDecided = evaluate(() => markCount == 1 && emptyCount == 2, investigate_canDouble, initialize_canDouble);
+            // Console.WriteLine("priority 4"); //debug
             if (isNextMoveDecided) {return nextMoveCandidate;}
 
-            // evaluate priority rank 5 : random haha
+            // evaluate priority rank 5 : corner
+            List<int[]> corner_list = new List<int[]> {new int[] {0,0},new int[] {2,0},new int[] {0,2},new int[] {2,2}};
+            foreach (var corner in corner_list)
+            {
+                if (board[corner[0]][corner[1]] == 0) {return corner;}
+            }
+
+            // evaluate priority rank 6 : random haha
+            // Console.WriteLine("priority 5"); //debug
             for (int xIndex = 1; xIndex<3; xIndex++)
             {
                 for (int yIndex = 0; yIndex < 3; yIndex++)
