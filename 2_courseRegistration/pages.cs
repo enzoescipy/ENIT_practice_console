@@ -3,41 +3,61 @@ using System.Data;
 namespace MainProject
 {
     /// <summary>
-    /// public static class FunctionalPage
+    /// public class FunctionalPage
     /// management of functional pages. 
     /// (not manage the non-functional menu pages.)
     /// </summary>
-    public static class FunctionalPage
+    public class FunctionalPage
     {
-        public static void WindowExit()
+        ClassDB classDB;
+        public FunctionalPage(ClassDB classDB)
+        {
+            this.classDB = classDB;
+        }
+        public void WindowExit()
         {
             UserInput.Get("press enter to exit ...  (any):");
             System.Environment.Exit(0);
         }
 
-        public static void ClassDBSearch(DataTable dataTable)
+        public void ClassDBSearch()
         {
-            PrettyPrint.PprintDataTable(dataTable);
+            classDB.PrintAll();
             // UserInput.Get("Esc 키를 누르면 홈 화면으로 돌아갑니다.");
         }
 
-        public static void MyTimeSchedule()
+        public void MyTimeSchedule()
         {
 
         }
     }
 
     /// <summary>
-    /// public static class MenuPage
+    /// public class MenuPage
     /// management for menu pages.
     /// </summary>
-    public static class MenuPage
+    public class Page
     {
+        FunctionalPage funcPage;
+        public Page(ClassDB classDB)
+        {
+            funcPage = new FunctionalPage(classDB);
+        }
+        private Action debugEmpty(string text)
+        {
+            void test()
+            {
+                Console.WriteLine($"TEST {text}");
+            }
+            return test;
+        }
+
+        
         /// <summary>
-        /// public static void FrontMenu()
+        /// public void FrontMenu()
         /// show the frontpage.
         /// </summary>
-        public static void FrontMenu()
+        public void FrontMenu()
         {
             Console.WriteLine("[[수강신청 프로그램에 오신 것을 환영합니다.]]");
             Console.WriteLine("");
@@ -47,7 +67,7 @@ namespace MainProject
             Console.WriteLine("4. 종료");
 
             var menuConnectionList = new List<Action> 
-            {ClassApplyMenu, InterestMenu, FunctionalPage.MyTimeSchedule, FunctionalPage.WindowExit};
+            {ClassApplyMenu, InterestMenu, debugEmpty("나의 시간표"), funcPage.WindowExit};
 
             int intMenu = Int32.Parse(UserInput.GetSpecific("진입할 메뉴를 선택해 주세요.  (1 ~ 4) : ", "1234", 1));
             intMenu += -1;
@@ -58,7 +78,7 @@ namespace MainProject
         /// <summary>
         /// 수강 신청 메뉴
         /// </summary>
-        public static void ClassApplyMenu()
+        public void ClassApplyMenu()
         {
             Console.WriteLine("[[수강 신청 메뉴]]");
             Console.WriteLine("");
@@ -70,7 +90,9 @@ namespace MainProject
             Console.WriteLine("6. 이전 메뉴로 이동");
             Console.WriteLine("7. 종료");
 
-            var menuConnectionList = new List<Action> {};
+            var menuConnectionList = new List<Action> 
+            {debugEmpty("추가"),debugEmpty("삭제"),debugEmpty("조회"),
+            debugEmpty("전체목록"),debugEmpty("전체검색"),() => {},funcPage.WindowExit};
 
             int intMenu = Int32.Parse(UserInput.GetSpecific("진입할 메뉴를 선택해 주세요.  (1 ~ 7) : ", "1234567", 1));
             intMenu += -1;
@@ -81,7 +103,7 @@ namespace MainProject
         /// <summary>
         /// 관심 과목 메뉴
         /// </summary>
-        public static void InterestMenu()
+        public void InterestMenu()
         {
             Console.WriteLine("[[관심 과목 메뉴]]");
             Console.WriteLine("");

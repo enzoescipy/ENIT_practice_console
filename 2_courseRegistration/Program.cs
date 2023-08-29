@@ -5,12 +5,12 @@
 
         static void Main(string[] args)
         {
-            Debug();
-            // while (true) {MenuPage.FrontMenu();}
+            // Debug();
+            var page = new Page(new ClassDB("dbLight.txt"));
+            while (true) {page.FrontMenu();}
         }
         public static void Debug()
         {
-            var debug = new ClassDB("dbLight.txt");
         }
     }
 

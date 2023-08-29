@@ -5,8 +5,8 @@ namespace MainProject
 {
     public class ClassDB
     {
-        public DataTable dataTable = new DataTable(); // DB-like object that store every information of classDB, EXCEPT the start/end time of class.
-        public List<ClassTimeWithID> classTimeList = new List<ClassTimeWithID>(); // List of classtime with corresponding id.
+        DataTable dataTable = new DataTable(); // DB-like object that store every information of classDB, EXCEPT the start/end time of class.
+        List<ClassTimeWithID> classTimeList = new List<ClassTimeWithID>(); // List of classtime with corresponding id.
         
         // SECURITY WARNING : deldte public on dataTable, classTimeList on production stage
 
@@ -63,5 +63,11 @@ namespace MainProject
                 }
             }
         }
+    
+        public void PrintAll()
+        {
+            PrettyPrint.PprintDataTable(dataTable);
+        }
+
     }
 }
