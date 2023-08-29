@@ -35,7 +35,7 @@ namespace MainProject
 
             var mainMenuConnectionList = new List<Action> {PlayWithYourFriend, PlayWithBot, ScoreBoard, WindowExit};
 
-            int intMenu = Int32.Parse(UserInput.GetSpecific("select the menu that you want to enter  (1 ~ 5) : ", "123", 1));
+            int intMenu = Int32.Parse(UserInput.GetSpecific("select the menu that you want to enter  (1 ~ 5) : ", "1234", 1));
             intMenu += -1;
 
             mainMenuConnectionList[intMenu]();
@@ -61,7 +61,7 @@ namespace MainProject
                                                         "123456789",1);
 
                 // proceed the turn
-                Board.Next(Int32.Parse(userInputNum));
+                if (Board.Next(Int32.Parse(userInputNum)) != 0) {continue;};
 
                 // check if game has been over.
                 var state = Board.BoardStateCheck();
@@ -108,7 +108,7 @@ namespace MainProject
                                                             "123456789",1);
 
                     // proceed the turn
-                    Board.Next(Int32.Parse(userInputNum));
+                    if (Board.Next(Int32.Parse(userInputNum)) != 0) {continue;}
                 }
                 else
                 {
@@ -287,7 +287,7 @@ namespace MainProject
         /// <param name="num"></param>
         /// <returns>
         /// return 0 : successfully worked.
-        /// return 1 : user number parameter missed from range.
+        /// return 1 : invalid user input.
         /// return 2 : state = false, method inactivated.
         /// </returns>
         public int Next(int num)
@@ -297,6 +297,10 @@ namespace MainProject
             
             // mark the board.
             int[] indexBoard = UserNumToDimention(num);
+
+            // if already marked, return 1
+            if (board[indexBoard[0]][indexBoard[1]] != 0) {return 1;}
+
             board[indexBoard[0]][indexBoard[1]] = currentTurn;
 
             // check if winner has decided.
@@ -327,9 +331,6 @@ namespace MainProject
         /// evaluate the board then returns the optimal next move.
         /// </summary>
         /// <returns>
-        /// return 0 : successfully worked.
-        /// return 1 : user number parameter missed from range.
-        /// return 2 : state = false, method inactivated.
         /// </returns>
         private int[]? AutoEvaluate()
         {
@@ -341,6 +342,7 @@ namespace MainProject
             int markCount = 0;
             bool isEmptyOccured = false;
             int emptyCount = 0;
+
             void investigate_myMark(int xIndex, int yIndex)
             {
                 var mark = board[xIndex][yIndex];
@@ -478,6 +480,10 @@ namespace MainProject
 
             // mark the board.
             int[] indexBoard = AutoEvaluate();
+
+            // if already marked, return 1
+            if (board[indexBoard[0]][indexBoard[1]] != 0) {return 1;}
+
             board[indexBoard[0]][indexBoard[1]] = currentTurn;
 
             // check if winner has decided.

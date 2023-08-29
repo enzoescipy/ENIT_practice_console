@@ -1,0 +1,15 @@
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\bin\Debug\net7.0\2_courseRegistration.exe
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\bin\Debug\net7.0\2_courseRegistration.deps.json
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\bin\Debug\net7.0\2_courseRegistration.runtimeconfig.json
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\bin\Debug\net7.0\2_courseRegistration.dll
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\bin\Debug\net7.0\2_courseRegistration.pdb
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.csproj.AssemblyReference.cache
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.GeneratedMSBuildEditorConfig.editorconfig
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.AssemblyInfoInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.AssemblyInfo.cs
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.csproj.CoreCompileInputs.cache
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.dll
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\refint\2_courseRegistration.dll
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.pdb
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\2_courseRegistration.genruntimeconfig.cache
+D:\aa_Projects_Folder\ENIT_practice\2_courseRegistration\obj\Debug\net7.0\ref\2_courseRegistration.dll

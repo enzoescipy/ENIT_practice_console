@@ -69,7 +69,7 @@ namespace MainProject
                 Console.Write(" ");
 
                 // print the check for right or wrong
-                bool isUserCorrect = randomIntList[i] == lotteryUserChoice[i];
+                bool isUserCorrect = randomIntList[i] == lotteryUserChoice[i]; ////////////// 기능명세 오류. 순위를 고려 하지않을 것 
                 Console.Write( isUserCorrect ? "O" : "X");
                 Console.WriteLine(" ");
 
