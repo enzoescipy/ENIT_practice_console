@@ -21,14 +21,16 @@ namespace MainProject
     public class ClassTime
     {
         // constant Arrays. Array's index will be directly matched to the corresponding string expression.
-        string[] dateArray = new string[] {"월","화","수","목","금"};
-        string[] timeArray = new string[] {"8:00","8:30","09:00","09:30","10:00","10:30","11:00","11:30",
+        static public string[] dateArray {get;} = new string[] {"월","화","수","목","금"};
+        private string[] _dateArray {get;} = dateArray;
+        static public string[] timeArray {get;} = new string[] {"8:00","8:30","09:00","09:30","10:00","10:30","11:00","11:30",
         "12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30",
         "18:00","18:30","19:00","19:30","20:00","20:30","21:00"};
+        private string[] _timeArray = timeArray;
 
         // each row of dateTimeRangeTable will be like [dateNum, startTimeNum, endTimeNum].
         // ex : 수 18:00~20:00 will became [2, 20, 24].
-        public List<List<int>> dateTimeRangeTable = new List<List<int>>(); // security warn : delete public in production
+        public List<List<int>> dateTimeRangeTable {get;} = new List<List<int>>(); // security warn : delete public in production
 
         /// <summary>
         /// public ClassTime(string korClassTimeExpression)
@@ -49,15 +51,15 @@ namespace MainProject
                 var timeString = parsedRow[parsedRow.Length - 1]; // "18:00~20:00"
                 var timeSplitedString = timeString.Split("~");
 
-                var startTime = Array.IndexOf(this.timeArray, timeSplitedString[0]);
-                var endTime = Array.IndexOf(this.timeArray, timeSplitedString[1]);
+                var startTime = Array.IndexOf(this._timeArray, timeSplitedString[0]);
+                var endTime = Array.IndexOf(this._timeArray, timeSplitedString[1]);
 
                 // iter the target parsed expression like : ["월", "수"] except "18:00~20:00"
                 for (int i=0; i < parsedRow.Length - 1; i++)
                 {
                     var targetDate = parsedRow[i]; // 월
                     if (String.Equals("", targetDate)) {continue;}
-                    var targetDateNum = Array.IndexOf(this.dateArray, targetDate); // 0
+                    var targetDateNum = Array.IndexOf(this._dateArray, targetDate); // 0
                     
                     int[] dateTimeRow = new int[] {targetDateNum, startTime, endTime}; // [0, 20, 24]
                     

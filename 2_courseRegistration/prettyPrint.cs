@@ -112,8 +112,9 @@ namespace MainProject
         /// but, this function reguards that list is the DataTable.
         /// </summary>
         /// <param name="list"></param>
-        public static void PprintDataTable(List<List<dynamic>> list)
+        public static void PprintDataTable(List<List<dynamic>>? list)
         {
+            if (list == null) {Console.WriteLine(); return;}
             // make the row of string from list
             var prittierList = Prettier2DList(list);
             var prittierRows = new List<string> ();
@@ -153,9 +154,11 @@ namespace MainProject
         /// print the dataTable prittier.
         /// </summary>
         /// <param name="dataTable"></param>
-        public static void PprintDataTable(DataTable dataTable)
+        public static void PprintDataTable(DataTable? dataTable, List<string> indexColLine)
         {
+            if (dataTable == null) {Console.WriteLine(); return;}
             List<List<dynamic>> dataTableList = new List<List<dynamic>>();
+            dataTableList.Add(new List<dynamic> (indexColLine));
             for (int i=0; i < dataTable.Rows.Count; i++)
             {
                 var row = dataTable.Rows[i];

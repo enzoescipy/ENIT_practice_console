@@ -107,5 +107,42 @@ namespace MainProject
             }
         }
 
+
+        /// <summary>
+        /// public static int GetInt(string description)
+        /// get integer that are parsed by Int32.TryParse
+        /// </summary>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static int GetInt(string description)
+        {
+            while (true)
+            {
+                string result = Get(description);
+                int resultParsed;
+                bool validate = Int32.TryParse(result, out resultParsed);
+                if (validate == true) {return resultParsed;} else {continue;}
+            }
+        }
+
+        /// <summary>
+        /// public static int GetInt(string description, Func<int, bool> formula)
+        /// get integer that are parsed by Int32.TryParse.
+        /// but, if integer did not satisfied the formula, then reject to return.
+        /// </summary>
+        /// <param name="description"></param>
+        /// <param name="formula"></param>
+        /// <returns></returns>
+        public static int GetInt(string description, Func<int, bool> formula)
+        {
+            while (true)
+            {
+                string result = Get(description);
+                int resultParsed;
+                bool validate = Int32.TryParse(result, out resultParsed);
+                if (validate == true && formula(resultParsed) == true) {return resultParsed;} else {continue;}
+            }
+        }
+
     }
 }
