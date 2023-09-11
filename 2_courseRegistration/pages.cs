@@ -319,11 +319,11 @@ namespace MainProject
         {
             Console.Clear();
 
-            //debug
-            Console.WriteLine("debug");
-            funcPage.debugLists();
-            Console.WriteLine("debug");
-            //debug
+            // //debug
+            // Console.WriteLine("debug");
+            // funcPage.debugLists();
+            // Console.WriteLine("debug");
+            // //debug
 
             Console.WriteLine("[[수강신청 프로그램에 오신 것을 환영합니다.]]");
             Console.WriteLine("");

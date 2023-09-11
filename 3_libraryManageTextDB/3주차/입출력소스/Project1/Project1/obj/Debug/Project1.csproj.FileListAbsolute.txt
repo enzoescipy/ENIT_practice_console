@@ -1,0 +1,8 @@
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\bin\Debug\Project1.exe.config
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\bin\Debug\Project1.exe
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\bin\Debug\Project1.pdb
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\obj\Debug\Project1.csproj.AssemblyReference.cache
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\obj\Debug\Project1.csproj.SuggestedBindingRedirects.cache
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\obj\Debug\Project1.csproj.CoreCompileInputs.cache
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\obj\Debug\Project1.exe
+C:\Users\rjqnr\OneDrive\바탕 화면\스터디\C#(CUI)_4일차\입출력소스\Project1\Project1\obj\Debug\Project1.pdb

@@ -1,0 +1,20 @@
+class Ui
+
+        private static Ui UiInstance = null;
+
+        public static Ui Instance               //싱글톤 패턴으로 선언
+        {
+            get
+            {
+                if UiInstance == null)
+                    UiInstance = new Ui();
+                return UiInstance;
+            }
+        }
+
+}
+
+
+
+
+
