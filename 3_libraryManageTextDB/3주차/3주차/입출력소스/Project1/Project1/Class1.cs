@@ -17,7 +17,7 @@ namespace Project1
         {
             //읽기 
             SettingData settingData = new SettingData();
-             settingData.readUser();
+            settingData.readUser();
 
 
             /*
@@ -73,5 +73,5 @@ namespace Project1
 
 
         }
-    }
+        }
 }
