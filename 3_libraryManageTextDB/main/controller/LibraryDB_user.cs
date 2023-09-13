@@ -16,5 +16,9 @@ namespace MainProject
         }
         
         private LibraryDB_User() {}
+        public void hello()
+        {
+            Console.WriteLine("hello, world!");
+        }
     }
 }

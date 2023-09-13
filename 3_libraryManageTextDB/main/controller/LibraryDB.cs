@@ -16,6 +16,8 @@ namespace MainProject
         }
         private LibraryDB() {}
 
-        public static LibraryDB_Book book = LibraryDB_Book.bookDB;
+        public LibraryDB_User user = LibraryDB_User.userDB;
+        public LibraryDB_Book book = LibraryDB_Book.bookDB;
+        public LibraryDB_Log log = LibraryDB_Log.logDB;
     }
 }

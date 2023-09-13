@@ -16,5 +16,9 @@ namespace MainProject
         }
         
         private LibraryDB_Log() {}
+        public void hello()
+        {
+            Console.WriteLine("hello, world!");
+        }
     }
 }
