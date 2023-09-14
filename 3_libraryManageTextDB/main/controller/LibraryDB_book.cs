@@ -29,9 +29,6 @@ namespace MainProject
         /// </returns>
         public int BookValidate(BookVO bookVO)
         {
-            // validate if hasNull.
-            if (bookVO.HasNull()) { return -1; }
-
             // validate if name is new name
             var query = localDBmodel.Find("name", bookVO.name, stringEquals);
             if (query.Count != 0) { return 1; }
@@ -154,8 +151,8 @@ namespace MainProject
             // if param is not null, then change the field of VO.
             if (name != null) {query[0].name = name;}
             if (description != null) {query[0].description = description;}
-            if (initStock != null) {query[0].initStock = initStock;}
-            if (currentStock != null) {query[0].currentStock = currentStock;}
+            if (initStock != null) {query[0].initStock = (int) initStock;}
+            if (currentStock != null) {query[0].currentStock = (int) currentStock;}
 
             // overrides the VO
             localDBmodel.Override(query);

@@ -9,21 +9,20 @@ namespace MainProject
         {
         }
 
-        public virtual bool HasNull() { return false; }
         public int primaryKey;
     }
 
     [Serializable]
     public class UserVO : BasicVO
     {
-        public UserVO(string? id, string? password, string? email)
+        public UserVO(string id, string password, string email)
         {
             this.id = id;
             this.password = password;
             this.email = email;
         }
 
-        public UserVO(int primaryKey, string? id, string? password, string? email)
+        public UserVO(int primaryKey, string id, string password, string email)
         {
             this.primaryKey = primaryKey;
             this.id = id;
@@ -31,56 +30,37 @@ namespace MainProject
             this.email = email;
         }
 
-        public UserVO() {}
-
-        public override bool HasNull()
-        {
-            if (id == null || password == null || email == null)
-            {
-                return true;
-            }
-            return false;
-        }
-        public string? id;
-        public string? password;
-        public string? email;
+        public string id;
+        public string password;
+        public string email;
     }
 
     [Serializable]
     public class BookVO : BasicVO
     {
-        public BookVO(string? name, string? description, int? initStock)
+        public BookVO(string name, string description, int initStock)
         {
             this.name = name;
             this.description = description;
             this.initStock = initStock;
         }
-        public BookVO(int primaryKey, string? name, string? description, int? initStock)
+        public BookVO(int primaryKey, string name, string description, int initStock)
         {
             this.primaryKey = primaryKey;
             this.name = name;
             this.description = description;
             this.initStock = initStock;
         }
-        public BookVO() {}
-        public override bool HasNull()
-        {
-            if (name == null || description == null || initStock == null)
-            {
-                return true;
-            }
-            return false;
-        }
-        public string? name;
-        public string? description;
-        public int? initStock;
-        public int? currentStock;
+        public string name;
+        public string description;
+        public int initStock;
+        public int currentStock;
     }
 
     [Serializable]
     public class LogVO : BasicVO
     {
-        public LogVO(int? userPKey, int? bookPKey, bool? isBorrow, string? time, int? count)
+        public LogVO(int userPKey, int bookPKey, bool isBorrow, string time, int count)
         {
             this.userPKey = userPKey;
             this.bookPKey = bookPKey;
@@ -89,7 +69,7 @@ namespace MainProject
             this.count = count;
         }
 
-        public LogVO(int primaryKey, int? userPKey, int? bookPKey, bool? isBorrow, string? time, int? count)
+        public LogVO(int primaryKey, int userPKey, int bookPKey, bool isBorrow, string time, int count)
         {
             this.primaryKey = primaryKey;
             this.userPKey = userPKey;
@@ -99,23 +79,13 @@ namespace MainProject
             this.count = count;
         }   
 
-        public LogVO() {}
-
-        public override bool HasNull()
-        {
-            if (userPKey == null || bookPKey == null || isBorrow == null || time == null || count == null || returnLeft == null || logOrder == null)
-            {
-                return true;
-            }
-            return false;
-        }
-        public int? userPKey;
-        public int? bookPKey;
-        public bool? isBorrow;
-        public string? time;
-        public int? count;
-        public int? returnLeft; // how many book you have to return
-        public int? logOrder; // time order of the log, which count separately by userPkey and bookPkey.
+        public int userPKey;
+        public int bookPKey;
+        public bool isBorrow;
+        public string time;
+        public int count;
+        public int returnLeft; // how many book you have to return
+        public int logOrder; // time order of the log, which count separately by userPkey and bookPkey.
 
     }
 }

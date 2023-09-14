@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace MainProject
 {
     public class LocalDBmodel<VO>
-        where VO : BasicVO, new()
+        where VO : BasicVO  //, new()
     {
         public string dirDB; 
         private int PkeyCounter;
@@ -60,11 +60,6 @@ namespace MainProject
         /// <param name="voInstanceList"></param>
         private void Create(List<VO> voInstanceList)
         {
-            // HasNull inspectation
-            foreach (VO vo in voInstanceList)
-            {
-                if (vo.HasNull()) {throw new NullReferenceException("VO instances must be Not-Has null state. are you missing to put value in some VOs?");}
-            }
             Stream s = new FileStream(dirDB, FileMode.Create);
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(s, voInstanceList);

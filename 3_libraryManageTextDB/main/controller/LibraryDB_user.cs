@@ -23,9 +23,6 @@ namespace MainProject
         /// </returns>
         public int UserAdd(UserVO userVO)
         {
-            // validate if hasNull.
-            if (userVO.HasNull()) { return -1; }
-
             // validate if id is new id
             var query = localDBmodel.Find("id", userVO.id, stringEquals);
             if (query.Count != 0) { return 1; }
