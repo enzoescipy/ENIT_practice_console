@@ -143,10 +143,13 @@ namespace MainProject
             }
         }
 
+
         /// <summary>
         /// find the matching property of the targetVO which is not null, in the DB then return the VO List.
         /// </summary>
-        /// <param name="targetVO"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="fieldValue"></param>
+        /// <param name="compareFunc"> function that compare DB value and keyword value, then return bool. first param is DBvalue, sec param is keyword value.</param>
         /// <returns></returns>
         public List<VO> Find(string fieldName, dynamic fieldValue, Func<dynamic, dynamic, bool> compareFunc)
         {

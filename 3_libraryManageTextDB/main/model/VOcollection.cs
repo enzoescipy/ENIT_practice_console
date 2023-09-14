@@ -49,25 +49,23 @@ namespace MainProject
     [Serializable]
     public class BookVO : BasicVO
     {
-        public BookVO(string? name, string? description, int? initStock, int? currentStock)
+        public BookVO(string? name, string? description, int? initStock)
         {
             this.name = name;
             this.description = description;
             this.initStock = initStock;
-            this.currentStock = currentStock;
         }
-        public BookVO(int primaryKey, string? name, string? description, int? initStock, int? currentStock)
+        public BookVO(int primaryKey, string? name, string? description, int? initStock)
         {
             this.primaryKey = primaryKey;
             this.name = name;
             this.description = description;
             this.initStock = initStock;
-            this.currentStock = currentStock;
         }
         public BookVO() {}
         public override bool HasNull()
         {
-            if (name == null || description == null || initStock == null || currentStock == null)
+            if (name == null || description == null || initStock == null)
             {
                 return true;
             }
@@ -105,7 +103,7 @@ namespace MainProject
 
         public override bool HasNull()
         {
-            if (userPKey == null || bookPKey == null || isBorrow == null || time == null || count == null)
+            if (userPKey == null || bookPKey == null || isBorrow == null || time == null || count == null || returnLeft == null || logOrder == null)
             {
                 return true;
             }
@@ -116,6 +114,8 @@ namespace MainProject
         public bool? isBorrow;
         public string? time;
         public int? count;
+        public int? returnLeft; // how many book you have to return
+        public int? logOrder; // time order of the log, which count separately by userPkey and bookPkey.
 
     }
 }

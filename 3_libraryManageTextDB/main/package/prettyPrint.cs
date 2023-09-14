@@ -110,6 +110,8 @@ namespace MainProject
         /// public static void PprintDataTable(List<List<dynamic>> list)
         /// print the PrettyPrint.Prettier2DList(list).
         /// but, this function reguards that list is the DataTable.
+        /// 
+        /// (regard each 1Dlist elements are the row of table.)
         /// </summary>
         /// <param name="list"></param>
         public static void PprintDataTable(List<List<dynamic>>? list)

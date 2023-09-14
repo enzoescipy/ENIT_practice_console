@@ -23,7 +23,6 @@ namespace MainProject
         }
         public static void Debug()
         {
-
         }
     }
 
