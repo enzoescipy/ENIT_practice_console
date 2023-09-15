@@ -1,6 +1,6 @@
 namespace MainProject
 {
-    public class LibraryDB_User
+    public class LibraryDB_User : LibraryDBPart
     {   
         public LibraryDB_User(LocalDBmodel<UserVO> localDBmodel) 
         {
@@ -8,9 +8,6 @@ namespace MainProject
         }
         private LocalDBmodel<UserVO> localDBmodel;
         // convinent constants
-        private Func<dynamic, dynamic, bool> stringEquals = (d, k) => String.Equals(d, k);
-        private Func<dynamic, dynamic, bool> simpleEquals = (d, k) => d == k;
-
         /// <summary>
         /// Add the new user to DB.
         /// </summary>
@@ -18,8 +15,9 @@ namespace MainProject
         /// <returns>
         /// return 0 : success code
         /// return -1 : nullable VO.
-        /// return 1 : some field are already in the other VO inside of db.
-        /// return 2 : some field is the blank value.
+        /// return c : id already exists
+        /// return 2 : email already exists
+        /// return 3 : some field is the blank value.
         /// </returns>
         public int UserAdd(UserVO userVO)
         {
@@ -28,17 +26,17 @@ namespace MainProject
             if (query.Count != 0) { return 1; }
 
             // validate if id is not empty
-            if (userVO.id.Length == 0) { return 2;}
+            if (userVO.id.Length == 0) { return 3;}
 
             // validate if email is new email
             query = localDBmodel.Find("email", userVO.email, stringEquals);
-            if (query.Count != 0) { return 1; }
+            if (query.Count != 0) { return 2; }
 
             // validate if email is not empty
-            if (userVO.email.Length == 0) { return 2;}
+            if (userVO.email.Length == 0) { return 3;}
 
             // validate if password is not empty
-            if (userVO.password.Length == 0) { return 2;}
+            if (userVO.password.Length == 0) { return 3;}
 
             // append DB.
             localDBmodel.Append(new List<UserVO>() {userVO});
@@ -102,12 +100,13 @@ namespace MainProject
 
         public List<UserVO> UserSearch(string email)
         {
-            return localDBmodel.Find("email", email, stringEquals);
+            return localDBmodel.Find("email", email, KeywordSearch);
         }
 
         public List<List<string>> UserSearchString(string email)
         {
-            return ListVOStringify(UserSearch(email));
+            var get = UserSearch(email);
+            return ListVOStringify(get);
         }
 
         /// <summary>
@@ -168,6 +167,7 @@ namespace MainProject
         /// <returns>
         /// return 0 : success
         /// return -1 : no user
+        /// return 1 : user have unreturned book. foreign key restriction
         /// </returns>
         /// <exception cref="InvalidDataException"></exception>
         public int UserDelete(string email)
@@ -179,6 +179,16 @@ namespace MainProject
             
             // get the user's pKey.
             List<int> pKeyDelete = new List<int>() {query[0].primaryKey};
+
+            // foreign key restriction : if any book that user borrowed exists, reject to delete.
+            var borrowedList = LibraryDB.libraryDB.log.UserBorrowedFind(query[0].primaryKey);
+            foreach (var borrowed in borrowedList)
+            {
+                if (borrowed[1] != 0)
+                {
+                    return 1;
+                }
+            }
 
             // do the delete 
             localDBmodel.Delete(pKeyDelete);

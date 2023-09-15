@@ -34,10 +34,6 @@ namespace MainProject
             }
         }
 
-        private void debug(List<VO> v)
-        {
-
-        }
 
         /// <summary>
         /// inspect if current dirDB directory is correct and DB is not empty.
@@ -82,9 +78,6 @@ namespace MainProject
             Stream s = new FileStream(dirDB, FileMode.Open);
             BinaryFormatter serializer = new BinaryFormatter();
             var rid = (List<VO>) serializer.Deserialize(s);
-            // //debug
-            // DebugConsole.D1List(rid);
-            // //debug
             s.Close();
             return rid;
         }
@@ -162,7 +155,6 @@ namespace MainProject
 
             foreach (VO vo in dbVOList)
             {
-                Console.WriteLine(fieldInfo.GetValue(vo));
                 if (compareFunc(fieldInfo.GetValue(vo), fieldValue))
                 {
                     newVOList.Add(vo);

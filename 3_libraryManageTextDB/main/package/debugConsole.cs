@@ -2,6 +2,15 @@ namespace MainProject
 {
     public static class DebugConsole
     {
+        public static void Debug(string description)
+        {
+            Console.WriteLine("//deubg//  " + description);
+        }
+
+        public static void Debug(dynamic desceiption)
+        {
+            Debug(desceiption.ToString());
+        }
         public static void D1List(dynamic list)
         {
             Func<dynamic, dynamic> func = (s) => {return s;};
@@ -9,6 +18,7 @@ namespace MainProject
         }
         public static void D1List(dynamic list, Func<dynamic, dynamic> func)
         {
+            Console.Write("//debug//  ");
             try 
             {
                 Console.Write("{");
@@ -24,11 +34,12 @@ namespace MainProject
                 Console.Write("unexpected exception happens.");
                 Console.Write(e);
             }
-
+            Console.WriteLine();
         }
 
         public static void D2List(dynamic list)
         {
+            Console.Write("//debug//  ");
             try 
             {
                 Console.Write("{");
@@ -44,6 +55,7 @@ namespace MainProject
                 Console.Write("unexpected exception happens.");
                 Console.Write(e);
             }
+            Console.WriteLine();
         }
     }
 }

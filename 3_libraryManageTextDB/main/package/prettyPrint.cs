@@ -8,30 +8,12 @@ namespace MainProject
     /// </summary>
     public static class PrettyPrint
     {
-        /// <summary>
-        /// public static void Pretty2DList(List<List<dynamic>> list)
-        /// return prettier 2D list.
-        /// (all elements of each row in 2D list must be simple, immutable type.)
-        /// </summary>
-        /// <param name="list"></param>
-        public static List<List<string>> Prettier2DList(List<List<dynamic>> list)
+        public static List<List<string>> Prettier2DList(List<List<string>> list)
         {
-            // convert the all element to the string type.
-            List<List<string>> listString = new List<List<string>>();
-            foreach (var row in list)
-            {
-                var stringRow = new List<string>();
-                foreach (var element in row)
-                {
-                    stringRow.Add(element.ToString());
-                }
-                listString.Add(stringRow);
-            }
-
             // check the maximum length of each column
             List<int> columnMaxLen = new List<int>();
 
-            foreach (var row in listString)
+            foreach (var row in list)
             {
                 foreach (var item in row.Select((value, index) => (value, index)))
                 {
@@ -52,20 +34,43 @@ namespace MainProject
             }
 
             // put the ' ' every string that has lower length of its column Max Len.
-            for (int rowIndex=0; rowIndex < listString.Count; rowIndex++)
+            for (int rowIndex=0; rowIndex < list.Count; rowIndex++)
             {
-                for (int colIndex=0; colIndex < listString[rowIndex].Count; colIndex++)
+                for (int colIndex=0; colIndex < list[rowIndex].Count; colIndex++)
                 {
-                    string target = listString[rowIndex][colIndex];
+                    string target = list[rowIndex][colIndex];
                     if (target.Length < columnMaxLen[colIndex]) 
                     {
                         int difference = columnMaxLen[colIndex] - target.Length;
-                        for (int i=0; i < difference; i++) {listString[rowIndex][colIndex] += " ";}
+                        for (int i=0; i < difference; i++) {list[rowIndex][colIndex] += " ";}
                     }
                 }
             }
 
-            return listString;
+            return list;
+        }
+
+        /// <summary>
+        /// public static void Pretty2DList(List<List<dynamic>> list)
+        /// return prettier 2D list.
+        /// (all elements of each row in 2D list must be simple, immutable type.)
+        /// </summary>
+        /// <param name="list"></param>
+        public static List<List<string>> Prettier2DList(List<List<dynamic>> list)
+        {
+            // convert the all element to the string type.
+            List<List<string>> listString = new List<List<string>>();
+            foreach (var row in list)
+            {
+                var stringRow = new List<string>();
+                foreach (var element in row)
+                {
+                    stringRow.Add(element.ToString());
+                }
+                listString.Add(stringRow);
+            }
+
+            return Prettier2DList(listString);
         }
 
         /// <summary>
@@ -74,6 +79,39 @@ namespace MainProject
         /// </summary>
         /// <param name="list"></param>
         public static void Pprint2DList(List<List<dynamic>> list)
+        {
+            // make the row of string from list
+            var prittierList = Prettier2DList(list);
+            var prittierRows = new List<string> ();
+
+            foreach (var row in prittierList)
+            {
+                string stringifiedRow = String.Join("|",row);
+                prittierRows.Add("|" + stringifiedRow + "|");
+            }
+
+            // find the max length row
+            int maxRowLen = 0;
+            foreach (var rowString in prittierRows)
+            {
+                maxRowLen = rowString.Length > maxRowLen ? rowString.Length : maxRowLen;
+            }
+
+            // print the table
+            string lineSep = ""; 
+            for (int i=0; i < maxRowLen; i++) {lineSep += "-";}
+            Console.WriteLine(lineSep);
+
+            foreach (var rowString in prittierRows)
+            {
+                Console.WriteLine(rowString);
+            }
+
+            Console.WriteLine(lineSep);
+
+        }
+
+        public static void Pprint2DStringList(List<List<string>> list)
         {
             // make the row of string from list
             var prittierList = Prettier2DList(list);

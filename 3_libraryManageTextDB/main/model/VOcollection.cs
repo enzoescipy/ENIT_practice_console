@@ -86,6 +86,5 @@ namespace MainProject
         public int count;
         public int returnLeft; // how many book you have to return
         public int logOrder; // time order of the log, which count separately by userPkey and bookPkey.
-
     }
 }
