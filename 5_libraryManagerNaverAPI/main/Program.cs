@@ -6,7 +6,9 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using MySql.Data.MySqlClient;
+
 
 namespace MainProject
 {
@@ -21,8 +23,12 @@ namespace MainProject
         }
         public static void Debug()
         {
-            DebugConsole.Debug(Convert.ToBoolean((sbyte) 1));
+            var bookSearch = new BookSearchFromNaver();
+            PrettyPrint.Pprint2DStringList(LibraryDB.libraryDB.book.ListVOStringify(bookSearch.initialSearch("책", 5).bookVOs));
+            PrettyPrint.Pprint2DStringList(LibraryDB.libraryDB.book.ListVOStringify(bookSearch.NextSearch().bookVOs));
+
         }
+        
     }
 
 }

@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using MySqlX.XDevAPI.Relational;
 using System.Data.Common;
+using System.Transactions;
 
 namespace MainProject
 {
@@ -54,7 +55,6 @@ namespace MainProject
         {
             try
             {
-                // transaction 넣어라
                 MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -95,7 +95,7 @@ namespace MainProject
         }
 
         /// <summary>
-        /// 
+        /// execute query with transaction
         /// </summary>
         /// <param name="query"></param>
         /// <returns>
@@ -104,15 +104,21 @@ namespace MainProject
         /// <exception cref="Exception"></exception>
         private int ExecuteQuery(string query)
         {
-            try
+            using (var trans = mySqlConnection.BeginTransaction())
             {
-                MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
-                return cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw new Exception("unexpected mySQL exception happened.");
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, mySqlConnection);
+                    var result = cmd.ExecuteNonQuery();
+                    trans.Commit();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    trans.Rollback();
+                    Console.WriteLine(e);
+                    throw new Exception("unexpected mySQL exception happened.");
+                }
             }
         }
 

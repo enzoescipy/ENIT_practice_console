@@ -48,21 +48,29 @@ namespace MainProject
         {
             this.name = "";
             this.description =  "";
+            this.isbn = "";
+            this.author = "";
         }
-        public BookVO(string name, string description, int initStock)
+        public BookVO(string name, string description, int initStock, string author, string isbn)
         {
             this.name = name;
             this.description = description;
             this.initStock = initStock;
+            this.isbn = isbn;
+            this.author = author;
         }
-        public BookVO(int pkey, string name, string description, int initStock)
+        public BookVO(int pkey, string name, string description, int initStock, string author, string isbn)
         {
             this.pkey = pkey;
             this.name = name;
             this.description = description;
             this.initStock = initStock;
+            this.isbn = isbn;
+            this.author = author;
         }
         public string name;
+        public string author;
+        public string isbn;
         public string description;
         public int initStock;
         public int currentStock;

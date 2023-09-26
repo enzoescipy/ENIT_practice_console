@@ -1783,11 +1783,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\aa_Projects_Folder\\ENIT_practice\\4_libraryManageMySQL\\main\\3_libraryManageTextDB.csproj",
+      "projectUniqueName": "D:\\aa_Projects_Folder\\ENIT_practice\\5_libraryManagerNaverAPI\\main\\3_libraryManageTextDB.csproj",
       "projectName": "3_libraryManageTextDB",
-      "projectPath": "D:\\aa_Projects_Folder\\ENIT_practice\\4_libraryManageMySQL\\main\\3_libraryManageTextDB.csproj",
+      "projectPath": "D:\\aa_Projects_Folder\\ENIT_practice\\5_libraryManagerNaverAPI\\main\\3_libraryManageTextDB.csproj",
       "packagesPath": "C:\\Users\\asdfg\\.nuget\\packages\\",
-      "outputPath": "D:\\aa_Projects_Folder\\ENIT_practice\\4_libraryManageMySQL\\main\\obj\\",
+      "outputPath": "D:\\aa_Projects_Folder\\ENIT_practice\\5_libraryManagerNaverAPI\\main\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asdfg\\AppData\\Roaming\\NuGet\\NuGet.Config",

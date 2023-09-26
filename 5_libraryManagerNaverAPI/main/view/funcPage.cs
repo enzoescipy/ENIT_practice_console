@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
 
@@ -18,6 +19,7 @@ namespace MainProject
             }
         }
         private LibraryDB libraryDB = LibraryDB.libraryDB;
+        private BookSearchFromNaver search = BookSearchFromNaver.bookSearchFromNaver;
         private UserVO? currentLogInUser = null;
         private bool isManagerOnline = false;
         private const string escape = "back";
@@ -221,6 +223,18 @@ namespace MainProject
                 {
                     return;
                 }
+                string author = UserInput.GetExcept("please put the author of book. 'back' to return back.  (book author/back)  :  ",
+                                                        UserInput.basicInvalidString);
+                if (String.Equals(escape, author))
+                {
+                    return;
+                }
+                string isbn = UserInput.GetExcept("please put the isbn of book. 'back' to return back.  (book isbn/back)  :  ",
+                                                        UserInput.basicInvalidString);
+                if (String.Equals(escape, isbn))
+                {
+                    return;
+                }
 
                 int initStockParsed;
                 while (true)
@@ -238,7 +252,7 @@ namespace MainProject
                     }
                 }
 
-                int createState = libraryDB.book.BookAdd(new BookVO(name, description, initStockParsed));
+                int createState = libraryDB.book.BookAdd(new BookVO(name, description, initStockParsed, author, isbn));
 
                 if (createState == 0)
                 {
@@ -257,6 +271,130 @@ namespace MainProject
                     continue;
                 }
             }
+        }
+
+        public void BookAddFromNaver()
+        {
+            string keyword = UserInput.GetExcept("please put the keyword you want to search from Naver Book Search (book keyword/back)  :  ",
+                                                    UserInput.basicInvalidString);
+            if (String.Equals(escape, keyword))
+            {
+                return;
+            }
+
+            bool isNext = false;
+            while (true)
+            {
+                (List<BookVO>? bookVOs, int state) searchedVOs;
+                if (isNext == false)
+                {
+                    searchedVOs = search.initialSearch(keyword, 5);
+                }
+                else
+                {
+                    isNext = false;
+                    searchedVOs = search.NextSearch();
+                }
+
+                if (searchedVOs.state == -1) { Console.WriteLine("(no result)");}
+                else if (searchedVOs.state != 0) { throw new Exception($"unexpected result happend : code {searchedVOs.state}");}
+                
+                // make showable table from xml then print
+
+                List<string> tableColumn = new List<string>() {"NAME", "DESCRIPTION", "AUTHOR", "ISBN"};
+                List<List<string>> showableTable = new List<List<string>>() {tableColumn};
+
+                foreach(BookVO book in searchedVOs.bookVOs)
+                {
+                    List<string> line = new List<string>();
+                    line.Add(book.name);
+                    line.Add(book.description);
+                    line.Add(book.author);
+                    line.Add(book.isbn);
+
+                    showableTable.Add(line);
+                }
+
+                PrettyPrint.Pprint2DStringList(showableTable);
+
+                BookVO? userSelectedVO = null;
+                while (true)
+                {
+                    string selection = UserInput.GetSpecific("please put the ISBN of book you want to add. \n if there's not, you can type \" next \" to see the next page (book isbn / back / next)  :  ",
+                                                        UserInput.numberString + "back" + "next");
+                    if (String.Equals(escape, selection))
+                    {
+                        return;
+                    }
+                    else if (String.Equals("next", selection))
+                    {
+                        isNext = true;
+                        break;
+                    }
+                    else
+                    {
+                        // find the user selction isbn from searchedVOs
+
+                        foreach(BookVO book in searchedVOs.bookVOs)
+                        {
+                            DebugConsole.Debug((book.isbn, selection));
+                            if (String.Equals(book.isbn, selection))
+                            {
+                                userSelectedVO = book;
+                                break;
+                            }
+                        }
+                        if (userSelectedVO != null)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Wrong ISBN.");
+                    }
+                }
+                
+                if (userSelectedVO != null)
+                {
+                    // insert VO to the DB.
+                    int initStockParsed;
+                    while (true)
+                    {
+                        string initStock = UserInput.GetSpecific("please put the initial stock of book. 'back' to return back.  (book initial stock/back)  :  ",
+                                                                UserInput.numberString + escape );
+                        if (String.Equals(escape, initStock))
+                        {
+                            return;
+                        }
+                        bool initStockParseState = Int32.TryParse(initStock, out initStockParsed);
+                        if (initStockParseState)
+                        {
+                            break;
+                        }
+                    }
+
+                    userSelectedVO.initStock = initStockParsed;
+
+                    int createState = libraryDB.book.BookAdd(userSelectedVO);
+                    if (createState == 0)
+                    {
+                        Console.WriteLine("book creation succeed.");
+                        UserInput.Get(" press any to return back ... (any)  : ");
+                        break;
+                    }
+                    else if (createState == 1)
+                    {
+                        Console.WriteLine("name already using by other book ...");
+                        continue;
+                    }
+                    else if (createState == 2)
+                    {
+                        Console.WriteLine("you entered some field blank ...");
+                        continue;
+                    }
+                    return;
+                }
+            }
+
+
         }
 
         public void UserInfo()
@@ -381,12 +519,52 @@ namespace MainProject
                     return;
                 }
 
+                int initStockParsed;
+                string initStock;
+                while (true)
+                {
+                    initStock = UserInput.GetSpecific("please put the new initial stock of book. 'back' to return back. \n'back' to return back, press enter to keep the current value.  (book new initial stock/back)  :   ",
+                                                            UserInput.numberString + escape);
+                    if (String.Equals(escape, initStock))
+                    {
+                        return;
+                    }
+                    bool initStockParseState = Int32.TryParse(initStock, out initStockParsed);
+                    if (initStockParseState || initStock.Length == 0)
+                    {
+                        break;
+                    }
+                }
+
+                string author = UserInput.GetExcept("please put the author of book. 'back' to return back.  (book author/back)  :  ",
+                                                        UserInput.basicInvalidString);
+                if (String.Equals(escape, author))
+                {
+                    return;
+                }
+                string isbn = UserInput.GetExcept("please put the isbn of book. 'back' to return back.  (book isbn/back)  :  ",
+                                                        UserInput.basicInvalidString);
+                if (String.Equals(escape, isbn))
+                {
+                    return;
+                }
+
                 int createState = libraryDB.book.BookInfoChange(nameInit, 
                                                                 name.Length == 0 ? null : name, 
-                                                                description.Length == 0 ? null : description, null);
+                                                                description.Length == 0 ? null : description,
+                                                                initStock.Length == 0 ? null : initStockParsed,
+                                                                author.Length == 0 ? null : author, 
+                                                                isbn.Length == 0 ? null : isbn);
                 if (createState != 0)
                 {
-                    Console.WriteLine("no book has found ...");
+                    if (createState == -1)
+                    {
+                        Console.WriteLine("no book has found ...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("new stock is less then the total amount of the book user borrowed ...");
+                    }
                     continue;
                 }
                 else

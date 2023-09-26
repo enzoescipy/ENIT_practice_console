@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wyssKOGI++a11wGmUbfpK1xPCiBD60/YcM7wik8BX6TQaOrUFj4JyHHS5u2jQ+t863IkWTvfszrbA25TbdHI0w==",
+  "dgSpecHash": "9dzxJ3LchZZh0a8CMmU3hfUBoki1vmKdmuva0Ykhm9ga4Nzyt3ejYIJ0cOx+a61JGmHo8A7JlFBGTco3Bbf+4w==",
   "success": true,
-  "projectFilePath": "D:\\aa_Projects_Folder\\ENIT_practice\\4_libraryManageMySQL\\main\\3_libraryManageTextDB.csproj",
+  "projectFilePath": "D:\\aa_Projects_Folder\\ENIT_practice\\5_libraryManagerNaverAPI\\main\\3_libraryManageTextDB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asdfg\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\asdfg\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",

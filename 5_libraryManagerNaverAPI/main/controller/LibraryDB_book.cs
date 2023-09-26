@@ -67,7 +67,7 @@ namespace MainProject
         /// <returns></returns>
         public List<List<string>> ListVOStringify(List<BookVO> voTable)
         {
-            List<string> tableColumn = new List<string>() {"NAME", "STOCK","AVAILABLE", "DESCRIPTION"};
+            List<string> tableColumn = new List<string>() {"NAME", "STOCK","AVAILABLE", "DESCRIPTION", "AUTHOR", "ISBN"};
             List<List<string>> showableTable = new List<List<string>>() {tableColumn};
 
             foreach(BookVO book in voTable)
@@ -77,6 +77,8 @@ namespace MainProject
                 line.Add(book.initStock.ToString());
                 line.Add(book.currentStock.ToString());
                 line.Add(book.description);
+                line.Add(book.author);
+                line.Add(book.isbn);
 
                 showableTable.Add(line);
             }
@@ -124,7 +126,7 @@ namespace MainProject
         /// return 1 : stock change failed
         /// </returns>
         /// <exception cref="InvalidDataException"></exception>
-        public int BookInfoChange(string targetName, string? name, string? description, int? initStock)
+        public int BookInfoChange(string targetName, string? name, string? description, int? initStock, string? author, string? isbn)
         {
             // find pKey book
             var query = localDBmodel.Find("name", targetName, 0);
@@ -135,6 +137,8 @@ namespace MainProject
             // if param is not null, then change the field of VO.
             if (name != null) {query[0].name = name;}
             if (description != null) {query[0].description = description;}
+            if (author != null) {query[0].author = author;}
+            if (isbn != null) {query[0].isbn = isbn;}
 
             // stock logic verify
             if (initStock != null) 

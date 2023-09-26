@@ -105,10 +105,11 @@ namespace MainProject
             Console.WriteLine("4. 회원 삭제");
             Console.WriteLine("5. 책 정보 수정");
             Console.WriteLine("6. 신규 책 등록");
-            Console.WriteLine("7. 책 삭제");
-            Console.WriteLine("8. 책 대여 반납 기록");
-            Console.WriteLine("9. 되돌아가기");
-            Console.WriteLine("10. 종료");
+            Console.WriteLine("7. 신규 책 등록 (색인 후 등록)");
+            Console.WriteLine("8. 책 삭제");
+            Console.WriteLine("9. 책 대여 반납 기록");
+            Console.WriteLine("10. 되돌아가기");
+            Console.WriteLine("11. 종료");
             Console.WriteLine();
 
             var menuConnectionList = new List<Action> 
@@ -118,6 +119,7 @@ namespace MainProject
             FunctionalPage.functionalPage.UserDelete,
             FunctionalPage.functionalPage.BookInfoChange,
             FunctionalPage.functionalPage.BookAdd,
+            FunctionalPage.functionalPage.BookAddFromNaver,
             FunctionalPage.functionalPage.BookDelete,
             FunctionalPage.functionalPage.LogList,
             () => {}, 
