@@ -1,0 +1,8 @@
+C:\Users\김창연\Desktop\apiTest\apiTest\bin\Debug\apiTest.exe.config
+C:\Users\김창연\Desktop\apiTest\apiTest\bin\Debug\apiTest.exe
+C:\Users\김창연\Desktop\apiTest\apiTest\bin\Debug\apiTest.pdb
+C:\Users\김창연\Desktop\apiTest\apiTest\obj\Debug\apiTest.csproj.AssemblyReference.cache
+C:\Users\김창연\Desktop\apiTest\apiTest\obj\Debug\apiTest.csproj.SuggestedBindingRedirects.cache
+C:\Users\김창연\Desktop\apiTest\apiTest\obj\Debug\apiTest.csproj.CoreCompileInputs.cache
+C:\Users\김창연\Desktop\apiTest\apiTest\obj\Debug\apiTest.exe
+C:\Users\김창연\Desktop\apiTest\apiTest\obj\Debug\apiTest.pdb

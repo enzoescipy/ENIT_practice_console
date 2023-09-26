@@ -1,0 +1,10 @@
+C:\Users\kim chang t\Desktop\나만의\EN#\test\pa\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\kim chang t\Desktop\나만의\EN#\test\pa\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\kim chang t\Desktop\나만의\EN#\test\pa\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\kim chang t\Desktop\나만의\EN#\test\pa\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\kim chang t\Desktop\나만의\EN#\test\pa\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\kim chang t\Desktop\나만의\EN#\정리\API적용소스\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\kim chang t\Desktop\나만의\EN#\정리\API적용소스\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\kim chang t\Desktop\나만의\EN#\정리\API적용소스\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\kim chang t\Desktop\나만의\EN#\정리\API적용소스\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\kim chang t\Desktop\나만의\EN#\정리\API적용소스\ConsoleApplication1\obj\x86\Debug\ResolveAssemblyReference.cache

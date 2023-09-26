@@ -1,0 +1,6 @@
+public string Strip(string text)
+{
+   return System.Text.RegularExpressions.Regex.Replace(text, @"<(.|\n)*?>", string.Empty);
+}
+
+책 제목 넣어주면 태그 없어짐
