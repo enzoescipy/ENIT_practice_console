@@ -163,7 +163,7 @@ namespace MainProject
             }
 
             // save DB
-            DebugConsole.Debug(String.Join("\n", queryList));
+            // DebugConsole.Debug(String.Join("\n", queryList));
             return ExecuteQuery(String.Join("\n", queryList));
         }
 
@@ -243,7 +243,7 @@ namespace MainProject
                 queryList.Add(updateQuery + valueQuery + pkeyQuery);
             }
 
-            DebugConsole.Debug(String.Join("\n", queryList));
+            // DebugConsole.Debug(String.Join("\n", queryList));
             return ExecuteQuery(String.Join("\n", queryList));
         }
 

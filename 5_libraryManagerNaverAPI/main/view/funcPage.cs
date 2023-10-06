@@ -298,24 +298,27 @@ namespace MainProject
 
                 if (searchedVOs.state == -1) { Console.WriteLine("(no result)");}
                 else if (searchedVOs.state != 0) { throw new Exception($"unexpected result happend : code {searchedVOs.state}");}
-                
-                // make showable table from xml then print
-
-                List<string> tableColumn = new List<string>() {"NAME", "DESCRIPTION", "AUTHOR", "ISBN"};
-                List<List<string>> showableTable = new List<List<string>>() {tableColumn};
-
-                foreach(BookVO book in searchedVOs.bookVOs)
+                else
                 {
-                    List<string> line = new List<string>();
-                    line.Add(book.name);
-                    line.Add(book.description);
-                    line.Add(book.author);
-                    line.Add(book.isbn);
+                    // make showable table from xml then print
 
-                    showableTable.Add(line);
+                    List<string> tableColumn = new List<string>() {"NAME", "DESCRIPTION", "AUTHOR", "ISBN"};
+                    List<List<string>> showableTable = new List<List<string>>() {tableColumn};
+
+                    foreach(BookVO book in searchedVOs.bookVOs)
+                    {
+                        List<string> line = new List<string>();
+                        line.Add(book.name);
+                        line.Add(book.description);
+                        line.Add(book.author);
+                        line.Add(book.isbn);
+
+                        showableTable.Add(line);
+                    }
+
+                    PrettyPrint.Pprint2DStringList(showableTable);
                 }
-
-                PrettyPrint.Pprint2DStringList(showableTable);
+                
 
                 BookVO? userSelectedVO = null;
                 while (true)
@@ -337,7 +340,7 @@ namespace MainProject
 
                         foreach(BookVO book in searchedVOs.bookVOs)
                         {
-                            DebugConsole.Debug((book.isbn, selection));
+                            // DebugConsole.Debug((book.isbn, selection));
                             if (String.Equals(book.isbn, selection))
                             {
                                 userSelectedVO = book;

@@ -2,6 +2,7 @@ namespace MainProject
 {
     public static class DebugConsole
     {
+        
         public static void Debug(string description)
         {
             Console.WriteLine("//deubg//  " + description);

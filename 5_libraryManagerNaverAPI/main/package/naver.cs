@@ -37,7 +37,7 @@ public class NaverBookSearchAPI
         {
             throw new ArgumentException("display, start parameter should be range in 1 ~ 100");
         }
-        this.start = 0;
+        this.start = 1 - display;
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class NaverBookSearchAPI
     public (XmlNodeList? xmlNodeList, int state) Next()
     {
         // validation of termination
-        if (start + 1 > 100)
+        if (start + display > 100)
         {
             isReachedEnd = true;
             return (null, -1);
@@ -67,10 +67,10 @@ public class NaverBookSearchAPI
         }
 
         // request perform
-        start++;
-        DebugConsole.Debug(start);
+        start = start + display;
 
         string url = basicURL + "query=" + query + "&display=" + display.ToString() + "&start=" + start.ToString();
+        // DebugConsole.Debug(url);
         HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
         request.Headers.Add("X-Naver-Client-Id", clientID);
         request.Headers.Add("X-Naver-Client-Secret", clientPW);
